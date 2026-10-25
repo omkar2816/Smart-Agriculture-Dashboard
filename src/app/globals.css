@@ -1,0 +1,225 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: var(--font-figtree), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-fraunces), ui-serif, Georgia, serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Earthy semantic palette */
+  --color-forest: var(--forest);
+  --color-olive: var(--olive);
+  --color-moss: var(--moss);
+  --color-sage: var(--sage);
+  --color-clay: var(--clay);
+  --color-ochre: var(--ochre);
+  --color-slate-blue: var(--slate-blue);
+  --color-ivory: var(--ivory);
+  --color-ink: var(--ink);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  --ivory: #f8f4ea;
+  --ink: #24302a;
+  --forest: #2c5a3c;
+  --olive: #6d7a3a;
+  --moss: #dfe5c9;
+  --sage: #8fa58a;
+  --clay: #b4552d;
+  --ochre: #b8862a;
+  --slate-blue: #4d6e86;
+
+  --background: #f8f4ea;
+  --foreground: #24302a;
+  --card: #fcfaf4;
+  --card-foreground: #24302a;
+  --popover: #fcfaf4;
+  --popover-foreground: #24302a;
+  --primary: #2c5a3c;
+  --primary-foreground: #f8f4ea;
+  --secondary: #ece6d6;
+  --secondary-foreground: #2b3a2f;
+  --muted: #efe9da;
+  --muted-foreground: #667062;
+  --accent: #e7ecd2;
+  --accent-foreground: #2c4a35;
+  --destructive: #a8412a;
+  --border: #e2dbc8;
+  --input: #d9d1bb;
+  --ring: #6d7a3a;
+  --radius: 0.5rem;
+
+  --chart-1: #2c6a47; /* plant 1 */
+  --chart-2: #c0792b; /* plant 2 */
+  --chart-3: #b4552d; /* temperature */
+  --chart-4: #4d6e86; /* humidity */
+  --chart-5: #7b6a9a;
+
+  --sidebar: #f1ebdb;
+  --sidebar-foreground: #2b3a2f;
+  --sidebar-primary: #2c5a3c;
+  --sidebar-primary-foreground: #f8f4ea;
+  --sidebar-accent: #e6e0cb;
+  --sidebar-accent-foreground: #2c4a35;
+  --sidebar-border: #ddd5bf;
+  --sidebar-ring: #6d7a3a;
+}
+
+/* The product intentionally ships one (light, ivory) theme. */
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-sans;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "ss01", "cv11";
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-heading);
+    letter-spacing: -0.01em;
+  }
+  ::selection {
+    background: #d6dfb4;
+  }
+}
+
+@layer components {
+  .eyebrow {
+    @apply text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-muted-foreground;
+  }
+  .num {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+  }
+  .display-num {
+    font-family: var(--font-heading);
+    font-variant-numeric: lining-nums tabular-nums;
+    letter-spacing: -0.02em;
+  }
+  .panel {
+    @apply rounded-xl border border-border bg-card;
+  }
+  .rule-top {
+    @apply border-t border-border;
+  }
+  .focus-ring {
+    @apply outline-none focus-visible:ring-2 focus-visible:ring-ring/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+}
+
+/* Restrained motion: a soft rise-in for page sections, a slow breathing dot for "live" */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes breathe {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(0.82);
+  }
+}
+@keyframes shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
+.animate-rise {
+  animation: rise 0.45s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.animate-breathe {
+  animation: breathe 2.4s ease-in-out infinite;
+}
+.stagger > * {
+  animation: rise 0.45s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.stagger > *:nth-child(2) {
+  animation-delay: 60ms;
+}
+.stagger > *:nth-child(3) {
+  animation-delay: 120ms;
+}
+.stagger > *:nth-child(4) {
+  animation-delay: 180ms;
+}
+.stagger > *:nth-child(5) {
+  animation-delay: 240ms;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-rise,
+  .animate-breathe,
+  .stagger > * {
+    animation: none !important;
+  }
+}
+
+/* Recharts: keep tooltips and axes legible in the ivory theme */
+.recharts-cartesian-axis-tick-value {
+  fill: var(--muted-foreground);
+  font-size: 11px;
+}
+.recharts-surface:focus,
+.recharts-wrapper:focus,
+.recharts-wrapper *:focus {
+  outline: none;
+}
