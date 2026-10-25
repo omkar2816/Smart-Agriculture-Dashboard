@@ -15,6 +15,11 @@ export const metadata: Metadata = {
   description:
     "Monitor soil moisture, temperature and humidity from your ESP32 irrigation system, explore historical analytics, and review forecasts alongside real weather data.",
   applicationName: "Tilth",
+  icons: {
+    icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
+  },
   robots: { index: false, follow: false },
 };
 
